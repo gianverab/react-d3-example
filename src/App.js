@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const App = () => {
@@ -9,6 +9,22 @@ const App = () => {
     setCity(e.target.value);
   };
 
+  const getTemps = () => {
+    Promise.all([fetch("./data/sf.json"), fetch("./data/ny.json")])
+      .then((responses) => Promise.all(responses.map((resp) => resp.json())))
+      .then(([sf, ny]) => {
+        sf.forEach((day) => (day.date = new Date(day.date)));
+        ny.forEach((day) => (day.date = new Date(day.date)));
+
+        setTemps({ sf, ny });
+      });
+  };
+
+  useEffect(() => {
+    getTemps();
+  }, []);
+
+  const data = temps[city];
   return (
     <AppWrapper>
       <h1>
