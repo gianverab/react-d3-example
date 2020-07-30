@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Chart from "./visualizations/chart";
 import sfData from "./data/sf.json";
 import nyData from "./data/ny.json";
+import { DataContext } from "./context/DataContext";
 
 const App = () => {
   const [temps, setTemps] = useState({});
@@ -47,7 +48,9 @@ const App = () => {
         *warning: these are <em>not</em> meant to be good examples of data
         visualizations, but just to show the possibility of using D3 and React*
       </p>
-      <Chart data={data} />
+      <DataContext.Provider value={data}>
+        <Chart />
+      </DataContext.Provider>
       <p>
         (Weather data from{" "}
         <a href="wunderground.com" target="_new">
