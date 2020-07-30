@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Chart from "./visualizations/chart";
+import sfData from "./data/sf.json";
+import nyData from "./data/ny.json";
 
 const App = () => {
   const [temps, setTemps] = useState({});
@@ -11,14 +13,12 @@ const App = () => {
   };
 
   const getTemps = () => {
-    Promise.all([fetch("./data/sf.json"), fetch("./data/ny.json")])
-      .then((responses) => Promise.all(responses.map((resp) => resp.json())))
-      .then(([sf, ny]) => {
-        sf.forEach((day) => (day.date = new Date(day.date)));
-        ny.forEach((day) => (day.date = new Date(day.date)));
+    const sf = sfData.sf;
+    const ny = nyData.ny;
+    sf.forEach((day) => (day.date = new Date(day.date)));
+    ny.forEach((day) => (day.date = new Date(day.date)));
 
-        setTemps({ sf, ny });
-      });
+    setTemps({ sf, ny });
   };
 
   useEffect(() => {

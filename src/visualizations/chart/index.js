@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import * as d3 from "d3";
 import styled from "styled-components";
 
@@ -9,16 +9,8 @@ const margin = { top: 20, right: 5, bottom: 20, left: 35 };
 const Chart = ({ data }) => {
   const [slices, setSlices] = useState([]);
 
-  const getData = () => {
-    const { data } = data;
-    if (!data) return {};
+  console.log(data);
 
-    return {};
-  };
-
-  useEffect(() => {
-    getData();
-  }, [data]);
   return <SvgBox width={width} height={height}></SvgBox>;
 };
 
