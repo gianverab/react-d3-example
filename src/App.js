@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import Chart from "./visualizations/chart";
 
 const App = () => {
   const [temps, setTemps] = useState({});
@@ -46,6 +47,7 @@ const App = () => {
         *warning: these are <em>not</em> meant to be good examples of data
         visualizations, but just to show the possibility of using D3 and React*
       </p>
+      <Chart data={data} />
       <p>
         (Weather data from{" "}
         <a href="wunderground.com" target="_new">
