@@ -50,7 +50,21 @@ const Chart = () => {
       setBars(newBars);
     }
   }, [data]);
-  return <SvgBox width={width} height={height}></SvgBox>;
+  return (
+    <SvgBox width={width} height={height}>
+      {bars &&
+        bars.map((d) => (
+          <rect
+            key={d.x}
+            x={d.x}
+            y={d.y}
+            width={2}
+            height={d.height}
+            fill={d.fill}
+          />
+        ))}
+    </SvgBox>
+  );
 };
 
 const SvgBox = styled.svg`
