@@ -5,7 +5,6 @@ import { DataContext } from "../../context/DataContext";
 
 const width = 540;
 const height = 540;
-const margin = { top: 20, right: 5, bottom: 20, left: 35 };
 
 const Chart = () => {
   const [bars, setBars] = useState([]);
@@ -46,7 +45,6 @@ const Chart = () => {
         };
       });
 
-      console.log("bars", newBars);
       setBars(newBars);
     }
   }, [data]);

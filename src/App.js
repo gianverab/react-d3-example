@@ -4,6 +4,7 @@ import Chart from "./visualizations/chart";
 import sfData from "./data/sf.json";
 import nyData from "./data/ny.json";
 import { DataContext } from "./context/DataContext";
+import RadialChart from "./visualizations/radialChart";
 
 const App = () => {
   const [temps, setTemps] = useState({});
@@ -50,10 +51,11 @@ const App = () => {
       </p>
       <DataContext.Provider value={data}>
         <Chart />
+        <RadialChart />
       </DataContext.Provider>
       <p>
         (Weather data from{" "}
-        <a href="wunderground.com" target="_new">
+        <a href="https://www.wunderground.com/" target="_new">
           wunderground.com
         </a>
         )
